@@ -1,0 +1,7 @@
+{
+  "name": "OutfitPlannerFrontend",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

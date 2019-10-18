@@ -1,14 +1,27 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <ion-buttons>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+<ion-content class="ion-padding">
+  <form [formGroup]="form" (ngSubmit)="login()">
+    <ion-list>
+    <ion-item>
+      <ion-label position="floating">Username</ion-label>
+      <ion-input formControlName="username" type="text"></ion-input>
+    </ion-item>
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input formControlName="password" type="password"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button  type="submit" [disabled]="this.form.invalid" expand="full">Login</ion-button>
+    <hr/>
+    <div class="ion-text-center"> Don't have an account? <a [routerLink]="['/register']">Register</a></div>
+  </form>
+
 </ion-content>

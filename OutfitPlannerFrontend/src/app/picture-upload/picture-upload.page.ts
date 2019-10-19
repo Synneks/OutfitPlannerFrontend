@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import {HttpClient} from "@angular/common/http";
+import {take} from "rxjs/operators";
 
 @Component({
   selector: 'app-picture-upload',
@@ -62,7 +63,7 @@ export class PictureUploadPage implements OnInit {
       id: 1,
       picture: this.base64Image
     };
-    this.httpClient.post("http://192.168.100.227:8080/clothes",clothing)
+    this.httpClient.post("http://192.168.100.228:8080/clothes",clothing)
         .subscribe(data=>{
           console.log(data);
         }, error => {
@@ -70,7 +71,8 @@ export class PictureUploadPage implements OnInit {
         })
   }
 
-  getPhoto() {
-
+  async getPhoto() {
+    const clothing = await this.httpClient.get<Clothing>('http://192.168.100.228:8080/clothes/1').pipe(take(1)).toPromise()
+    this.base64Image = clothing.picture;
   }
 }

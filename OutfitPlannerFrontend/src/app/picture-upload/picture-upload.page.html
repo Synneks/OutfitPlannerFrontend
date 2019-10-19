@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>picture-upload</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-button (click)="openCamera()">Open Camera</ion-button>
+  <ion-button (click)="openGallery()">Open Gallery</ion-button>
+  <img [src]="base64Image" alt="your photo will be displayed here">
+  <ion-button (click)="uploadPhoto()">Upload Photo</ion-button>
+
+  <ion-button (click)="getPhoto()">Get Photo</ion-button>
+</ion-content>

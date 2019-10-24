@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import {HttpClient} from "@angular/common/http";
-import {take} from "rxjs/operators";
+import {Clothing} from "../interfaces/Clothing";
+import {Type} from "../interfaces/Type";
+import {Color} from "../interfaces/Color";
+import {Category} from "../interfaces/Category";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+
 
 @Component({
   selector: 'app-picture-upload',
@@ -12,7 +17,7 @@ export class PictureUploadPage implements OnInit {
 
   base64Image:string;
 
-  constructor(private camera: Camera, public httpClient:HttpClient) { }
+  constructor(private camera: Camera, public httpClient:HttpClient, public formBuilder: FormBuilder) { }
 
   ngOnInit() {
   }
@@ -24,10 +29,7 @@ export class PictureUploadPage implements OnInit {
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
     };
-
       this.camera.getPicture(options).then((imageData) => {
-      // imageData is either a base64 encoded string or a file URI
-      // If it's base64 (DATA_URL):
       this.base64Image = 'data:image/jpeg;base64,' + imageData;
     }, (err) => {
       // Handle error
@@ -43,10 +45,7 @@ export class PictureUploadPage implements OnInit {
       mediaType: this.camera.MediaType.PICTURE,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
     };
-
     this.camera.getPicture(options).then((imageData) => {
-      // imageData is either a base64 encoded string or a file URI
-      // If it's base64 (DATA_URL):
       this.base64Image = 'data:image/jpeg;base64,' + imageData;
     }, (err) => {
       // Handle error
@@ -54,25 +53,67 @@ export class PictureUploadPage implements OnInit {
 
   }
 
+    categories: Category[] = [{
+        id: 1,
+        name:"category1",
+    },{
+        id: 2,
+        name:"category2"
+    }];
 
-  uploadPhoto() {
+    colors: Color[] = [{
+        id: 1,
+        name:"color1",
+        r:123,
+        g:456,
+        b:789
+    },
+        {
+        id: 2,
+        name:"color2",
+        r:123,
+        g:456,
+        b:789
+    }];
 
-    console.log("aici");
+    types: Type[] =[{
+        id: 1,
+        name: "type1"
+    },{
+        id: 2,
+        name: "type2"
+    }];
 
-    let clothing: Clothing ={
-      id: 1,
-      picture: this.base64Image
-    };
-    this.httpClient.post("http://192.168.100.228:8080/clothes",clothing)
-        .subscribe(data=>{
-          console.log(data);
-        }, error => {
-          console.log(error);
-        })
+    uploadPhoto() {
+
+
+        let clothing: Clothing ={
+            id: 2,
+            picture: this.base64Image,
+            type: this.types[0],
+            colors: this.colors,
+            categories: this.categories
+        };
+        this.httpClient.post("http://192.168.100.228:8080/users/1/clothes",clothing)
+            .subscribe(data=>{
+              //console.log(data);
+            }, error => {
+              console.log(error);
+            })
+
   }
 
-  async getPhoto() {
-    const clothing = await this.httpClient.get<Clothing>('http://192.168.100.228:8080/clothes/1').pipe(take(1)).toPromise()
-    this.base64Image = clothing.picture;
+    public form: FormGroup = this.formBuilder.group({
+        color:[null, Validators.required],
+        category:[null, Validators.required],
+        type:[null, Validators.required]
+    });
+
+  log(){
+      const {color, category, type} = this.form.value;
+      console.log(color);
+      console.log(category);
+      console.log(type);
   }
+
 }

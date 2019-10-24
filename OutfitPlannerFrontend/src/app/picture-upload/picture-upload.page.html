@@ -5,10 +5,38 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-button (click)="openCamera()">Open Camera</ion-button>
-  <ion-button (click)="openGallery()">Open Gallery</ion-button>
+  <ion-button (click)="openCamera()" expand="full">Open Camera</ion-button>
+  <ion-button (click)="openGallery()" expand="full">Open Gallery</ion-button>
+  <ion-button (click)="uploadPhoto()" expand="full">Upload Photo</ion-button>
   <img [src]="base64Image" alt="your photo will be displayed here">
-  <ion-button (click)="uploadPhoto()">Upload Photo</ion-button>
 
-  <ion-button (click)="getPhoto()">Get Photo</ion-button>
+
 </ion-content>
+
+<form [formGroup]="form" (ngSubmit)="log()">
+  <ion-list>
+    <ion-item>
+      <ion-label>Colors</ion-label>
+      <ion-select multiple="true" interface="alert" formControlName="color">
+        <ion-select-option *ngFor="let color of colors" [value]="color">{{color.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Categories</ion-label>
+      <ion-select multiple="true" interface="alert" formControlName="category">
+        <ion-select-option *ngFor="let category of categories" [value]="category">{{category.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Type</ion-label>
+      <ion-select multiple="false" interface="alert" formControlName="type">
+        <ion-select-option *ngFor="let type of types" [value]="type">{{type.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-button  type="submit" [disabled]="this.form.invalid" expand="full">Send</ion-button>
+</form>
+
+

@@ -1,19 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>picture-upload</ion-title>
+    <ion-buttons>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Picture upload</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
   <ion-button (click)="openCamera()" expand="full">Open Camera</ion-button>
   <ion-button (click)="openGallery()" expand="full">Open Gallery</ion-button>
-  <ion-button (click)="uploadPhoto()" expand="full">Upload Photo</ion-button>
   <img [src]="base64Image" alt="your photo will be displayed here">
 
 
 </ion-content>
 
-<form [formGroup]="form" (ngSubmit)="log()">
+<form [formGroup]="form" (ngSubmit)="uploadPhoto()">
   <ion-list>
     <ion-item>
       <ion-label>Colors</ion-label>
@@ -36,7 +38,7 @@
       </ion-select>
     </ion-item>
   </ion-list>
-  <ion-button  type="submit" [disabled]="this.form.invalid" expand="full">Send</ion-button>
+  <ion-button  type="submit" [disabled]="this.form.invalid" expand="full">Upload Photo</ion-button>
 </form>
 
 

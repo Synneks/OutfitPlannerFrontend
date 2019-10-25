@@ -16,10 +16,22 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class PictureUploadPage implements OnInit {
 
   base64Image:string;
+  categories: Category[];
+  colors: Color[];
+  types: Type[];
 
   constructor(private camera: Camera, public httpClient:HttpClient, public formBuilder: FormBuilder) { }
 
-  ngOnInit() {
+  public form: FormGroup = this.formBuilder.group({
+      color:[null, Validators.required],
+      category:[null, Validators.required],
+      type:[null, Validators.required]
+  });
+
+  async ngOnInit() {
+      this.categories = await this.httpClient.get<Category[]>('http://192.168.100.228:8080/categories').pipe().toPromise();
+      this.colors = await this.httpClient.get<Color[]>('http://192.168.100.228:8080/colors').pipe().toPromise();
+      this.types = await this.httpClient.get<Type[]>('http://192.168.100.228:8080/types').pipe().toPromise();
   }
 
   openCamera(){
@@ -53,67 +65,22 @@ export class PictureUploadPage implements OnInit {
 
   }
 
-    categories: Category[] = [{
-        id: 1,
-        name:"category1",
-    },{
-        id: 2,
-        name:"category2"
-    }];
-
-    colors: Color[] = [{
-        id: 1,
-        name:"color1",
-        r:123,
-        g:456,
-        b:789
-    },
-        {
-        id: 2,
-        name:"color2",
-        r:123,
-        g:456,
-        b:789
-    }];
-
-    types: Type[] =[{
-        id: 1,
-        name: "type1"
-    },{
-        id: 2,
-        name: "type2"
-    }];
-
-    uploadPhoto() {
-
-
-        let clothing: Clothing ={
-            id: 2,
-            picture: this.base64Image,
-            type: this.types[0],
-            colors: this.colors,
-            categories: this.categories
-        };
-        this.httpClient.post("http://192.168.100.228:8080/users/1/clothes",clothing)
-            .subscribe(data=>{
-              //console.log(data);
-            }, error => {
-              console.log(error);
-            })
-
-  }
-
-    public form: FormGroup = this.formBuilder.group({
-        color:[null, Validators.required],
-        category:[null, Validators.required],
-        type:[null, Validators.required]
-    });
-
-  log(){
+  uploadPhoto() {
       const {color, category, type} = this.form.value;
-      console.log(color);
-      console.log(category);
-      console.log(type);
+      let clothing: Clothing ={
+          id: 0,
+          picture: this.base64Image,
+          type: type,
+          colors: color,
+          categories: category
+      };
+      this.httpClient.post("http://192.168.100.228:8080/users/1/clothes",clothing)
+          .subscribe(data=>{
+              alert("clothing successfully added!")
+          }, error => {
+              console.log(error);
+          })
   }
+
 
 }

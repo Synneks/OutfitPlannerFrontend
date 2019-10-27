@@ -6,6 +6,8 @@ import {Type} from "../interfaces/Type";
 import {Color} from "../interfaces/Color";
 import {Category} from "../interfaces/Category";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {API_URL} from "../constants";
+import {LocalStorageUser} from "../interfaces/User";
 
 
 @Component({
@@ -29,9 +31,9 @@ export class PictureUploadPage implements OnInit {
   });
 
   async ngOnInit() {
-      this.categories = await this.httpClient.get<Category[]>('http://192.168.100.228:8080/categories').pipe().toPromise();
-      this.colors = await this.httpClient.get<Color[]>('http://192.168.100.228:8080/colors').pipe().toPromise();
-      this.types = await this.httpClient.get<Type[]>('http://192.168.100.228:8080/types').pipe().toPromise();
+      this.categories = await this.httpClient.get<Category[]>(API_URL + 'clothes/categories').pipe().toPromise();
+      this.colors = await this.httpClient.get<Color[]>(API_URL + 'clothes/colors').pipe().toPromise();
+      this.types = await this.httpClient.get<Type[]>(API_URL + 'clothes/types').pipe().toPromise();
   }
 
   openCamera(){
@@ -74,12 +76,15 @@ export class PictureUploadPage implements OnInit {
           colors: color,
           categories: category
       };
-      this.httpClient.post("http://192.168.100.228:8080/users/1/clothes",clothing)
+      const loggedUser = localStorage.getItem('user');
+      const user = JSON.parse(loggedUser);
+      this.httpClient.post(API_URL + "users/"+user.id+"/clothes",clothing)
           .subscribe(data=>{
               alert("clothing successfully added!")
           }, error => {
               console.log(error);
           })
+
   }
 
 

@@ -7,9 +7,34 @@
     </ion-toolbar>
 </ion-header>
 
+<form [formGroup]="form" (ngSubmit)="search()">
+    <ion-list>
+        <ion-item>
+            <ion-label>Colors</ion-label>
+            <ion-select multiple="false" interface="alert" formControlName="color">
+                <ion-select-option *ngFor="let color of colors" [value]="color">{{color.name}}</ion-select-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Categories</ion-label>
+            <ion-select multiple="false" interface="alert" formControlName="category">
+                <ion-select-option *ngFor="let category of categories" [value]="category">{{category.name}}</ion-select-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Type</ion-label>
+            <ion-select multiple="false" interface="alert" formControlName="type">
+                <ion-select-option *ngFor="let type of types" [value]="type">{{type.name}}</ion-select-option>
+            </ion-select>
+        </ion-item>
+    </ion-list>
+</form>
+
 <ion-content>
   <ion-list >
-    <ion-item *ngFor="let clothing of clothes">
+    <ion-item *ngFor="let clothing of filteredClothes">
 
         <ion-img [src]="clothing.picture" alt="picture"></ion-img>
 

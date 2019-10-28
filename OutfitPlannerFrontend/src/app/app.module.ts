@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from "@angular/common/http";
 import {Camera} from '@ionic-native/camera/ngx';
 import {CommonModule} from "@angular/common";
+import {UserService} from "./user.service";
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +21,7 @@ import {CommonModule} from "@angular/common";
       Camera,
     StatusBar,
     SplashScreen,
+    UserService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

@@ -7,6 +7,7 @@ import {take} from "rxjs/operators";
 import {Router} from "@angular/router";
 import {json} from "@angular-devkit/core";
 import {API_URL} from "../constants";
+import {UserService} from "../services/user.service";
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,7 @@ export class HomePage {
     password:[null, Validators.required]
   });
 
-  constructor(public formBuilder: FormBuilder, public httpClient: HttpClient,private router: Router) {}
+  constructor(public formBuilder: FormBuilder, public userService: UserService) {}
 
   async login(){
     const {username, password} = this.form.value;
@@ -29,25 +30,13 @@ export class HomePage {
         username : username,
         password : password
       };
-
     try{
-        let receivedUser = await this.httpClient.post<User>(API_URL+'login', user).pipe(take(1)).toPromise();
-        this.router.navigate(['/gallery']);
-        const storedUser : LocalStorageUser ={
-            id: receivedUser.userId,
-            username: receivedUser.username
-        };
-        const jsonUser = JSON.stringify(storedUser);
-        localStorage.setItem('user', jsonUser);
+        this.userService.login(user);
         this.form.get('username').reset();
         this.form.get('password').reset();
     }catch(error){
         alert(error.error);
     }
-
-
-
-
 
   }
 

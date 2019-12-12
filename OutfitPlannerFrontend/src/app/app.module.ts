@@ -11,12 +11,14 @@ import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from "@angular/common/http";
 import {Camera} from '@ionic-native/camera/ngx';
 import {CommonModule} from "@angular/common";
-import {UserService} from "./user.service";
+import {UserService} from "./services/user.service";
+import {ColorsModalPageModule} from "./colors-modal/colors-modal.module";
+
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, CommonModule],
+  imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, CommonModule, ColorsModalPageModule],
   providers: [
       Camera,
     StatusBar,
@@ -24,6 +26,7 @@ import {UserService} from "./user.service";
     UserService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule {}

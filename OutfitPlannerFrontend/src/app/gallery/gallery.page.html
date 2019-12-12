@@ -1,14 +1,16 @@
 <ion-header>
     <ion-toolbar>
-        <ion-buttons>
+        <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title>Gallery</ion-title>
+        <ion-title >Gallery</ion-title>
+
     </ion-toolbar>
 </ion-header>
 
-<form [formGroup]="form" (ngSubmit)="search()">
-    <ion-list>
+
+<ion-content class="ion-padding">
+    <form [formGroup]="form" (ngSubmit)="search()">
         <ion-item>
             <ion-label>Colors</ion-label>
             <ion-select multiple="false" interface="alert" formControlName="color">
@@ -29,16 +31,20 @@
                 <ion-select-option *ngFor="let type of types" [value]="type">{{type.name}}</ion-select-option>
             </ion-select>
         </ion-item>
-    </ion-list>
-</form>
+    </form>
 
-<ion-content>
-  <ion-list >
-    <ion-item *ngFor="let clothing of filteredClothes">
+<hr/>
 
-        <ion-img [src]="clothing.picture" alt="picture"></ion-img>
+    <ion-grid >
+        <ion-row>
 
-    </ion-item>
-  </ion-list>
+    <ion-col size="6" *ngFor="let clothing of filteredClothes">
+
+        <ion-img [src]="clothing.picture" alt="picture" (click)="goToClothingPage(clothing)"></ion-img>
+
+    </ion-col>
+        </ion-row>
+
+    </ion-grid>
 
 </ion-content>

@@ -3,9 +3,6 @@ import {Clothing} from "../interfaces/Clothing";
 import {ModalController} from "@ionic/angular";
 import {ColorsModalPage} from "../colors-modal/colors-modal.page";
 import {ActivatedRoute, Router} from "@angular/router";
-import {OutfitService} from "../services/outfit.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Category} from "../interfaces/Category";
 import {GenerateOutfitModalPage} from "../generate-outfit-modal/generate-outfit-modal.page";
 
 @Component({
@@ -60,9 +57,7 @@ export class ClothingPage implements OnInit {
     this.currentModal = modal;
     return await this.currentModal.present();
   }
-  //
-  // generateOutfit(){
-  //   //this.outfitService.generateOutfit(this.clothing.id, this.selectedCategory.id);
-  // }
+
+
 
 }

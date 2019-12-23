@@ -4,6 +4,7 @@ import {Outfit} from "../interfaces/Outfit";
 import {Clothing} from "../interfaces/Clothing";
 import {OutfitService} from "../services/outfit.service";
 
+
 @Component({
   selector: 'app-choose-outfits',
   templateUrl: './choose-outfits.page.html',
@@ -22,7 +23,9 @@ export class ChooseOutfitsPage implements OnInit {
     // });
   }
   async ngOnInit() {
-    this.outfits = await this.outfitService.getAll();
+    this.outfitService.getAll().subscribe(data=>{
+      this.outfits= data as Outfit[];
+  })
   }
 
   goToClothingPage(clothing: Clothing) {
@@ -35,6 +38,10 @@ export class ChooseOutfitsPage implements OnInit {
   }
 
   save(outfit: Outfit) {
-    
+    this.outfitService.save(outfit).subscribe((data)=>{
+      alert("Outfit successfully saved!");
+    },error1 => {
+      alert("Could not save outfit!");
+    });
   }
 }

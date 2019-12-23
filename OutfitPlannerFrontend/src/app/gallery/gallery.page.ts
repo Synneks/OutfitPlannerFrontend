@@ -36,11 +36,14 @@ export class GalleryPage implements OnInit {
               public clothingService: ClothingService, public colorService:ColorService, private router: Router) { }
 
   async ngOnInit() {
-    this.clothes = await this.clothingService.getAll();
-    this.filteredClothes = this.clothes;
+
     this.categories = await this.categoryService.getAll();
     this.colors = await this.colorService.getAll();
     this.types = await this.typeService.getAll();
+    this.clothingService.getAll().subscribe(data=>{
+      this.clothes = data as Clothing[];
+    });
+    this.filteredClothes = this.clothes;
 
     this.form.valueChanges.subscribe((formData) => {
       this.search(formData.color, formData.category, formData.type);

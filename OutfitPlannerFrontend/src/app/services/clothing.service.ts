@@ -18,10 +18,10 @@ export class ClothingService {
     return this.httpClient.post<Clothing>(API_URL + "users/"+user.id+"/clothes",clothing);
   }
 
-  getAll(){
+  getAll():Observable<Clothing[]>{
     const loggedUser = localStorage.getItem('user');
     const user = JSON.parse(loggedUser);
-    return this.httpClient.get<Clothing[]>(API_URL+'/users/'+user.id+'/clothes').pipe().toPromise();
+    return this.httpClient.get<Clothing[]>(API_URL+'/users/'+user.id+'/clothes');
   }
 
   change(clothing){

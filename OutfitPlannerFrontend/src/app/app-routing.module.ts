@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'clothing', loadChildren: './clothing/clothing.module#ClothingPageModule' },
   { path: 'generate-outfit-modal', loadChildren: './generate-outfit-modal/generate-outfit-modal.module#GenerateOutfitModalPageModule' },
   { path: 'choose-outfits', loadChildren: './choose-outfits/choose-outfits.module#ChooseOutfitsPageModule' },
+  { path: 'outfit-gallery', loadChildren: './outfit-gallery/outfit-gallery.module#OutfitGalleryPageModule' },
 
 ];
 

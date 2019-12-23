@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import {MenuController, Platform} from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import {UserService} from "./user.service";
+import {UserService} from "./services/user.service";
 
 
 @Component({

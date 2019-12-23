@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import {HttpClient} from "@angular/common/http";
 import {Clothing} from "../interfaces/Clothing";
 import {Type} from "../interfaces/Type";
-import {Color} from "../interfaces/Color";
 import {Category} from "../interfaces/Category";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {API_URL} from "../constants";
-import {LocalStorageUser} from "../interfaces/User";
+import {CategoryService} from "../services/category.service";
+import {TypeService} from "../services/type.service";
+import {ClothingService} from "../services/clothing.service";
 
 
 @Component({
@@ -19,21 +18,22 @@ export class PictureUploadPage implements OnInit {
 
   base64Image:string;
   categories: Category[];
-  colors: Color[];
   types: Type[];
+  placeholderPictureUrl: string = "http://www.stleos.uq.edu.au/wp-content/uploads/2016/08/image-placeholder-350x350.png";
 
-  constructor(private camera: Camera, public httpClient:HttpClient, public formBuilder: FormBuilder) { }
+  constructor(private camera: Camera, public formBuilder: FormBuilder,
+              public categoryService: CategoryService, public typeService: TypeService,
+              public clothingService: ClothingService
+    ) { }
 
   public form: FormGroup = this.formBuilder.group({
-      color:[null, Validators.required],
       category:[null, Validators.required],
       type:[null, Validators.required]
   });
 
   async ngOnInit() {
-      this.categories = await this.httpClient.get<Category[]>(API_URL + 'clothes/categories').pipe().toPromise();
-      this.colors = await this.httpClient.get<Color[]>(API_URL + 'clothes/colors').pipe().toPromise();
-      this.types = await this.httpClient.get<Type[]>(API_URL + 'clothes/types').pipe().toPromise();
+      this.categories = await this.categoryService.getAll();
+      this.types = await this.typeService.getAll();
   }
 
   openCamera(){
@@ -67,23 +67,22 @@ export class PictureUploadPage implements OnInit {
 
   }
 
-  uploadPhoto() {
-      const {color, category, type} = this.form.value;
+  async uploadPhoto() {
+      const {category, type} = this.form.value;
       let clothing: Clothing ={
           id: 0,
           picture: this.base64Image,
           type: type,
-          colors: color,
+          colors: null,
           categories: category
       };
-      const loggedUser = localStorage.getItem('user');
-      const user = JSON.parse(loggedUser);
-      this.httpClient.post(API_URL + "users/"+user.id+"/clothes",clothing)
-          .subscribe(data=>{
-              alert("clothing successfully added!")
-          }, error => {
-              console.log(error);
-          })
+      this.clothingService.save(clothing).subscribe(data=>{
+          alert("clothing successfully added!")
+      }, error => {
+          console.log(error);
+      })
+
+
 
   }
 

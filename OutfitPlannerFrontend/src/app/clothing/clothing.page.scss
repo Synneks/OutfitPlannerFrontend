@@ -1,0 +1,13 @@
+.color {
+  width: 10px;
+  height: 10px;
+  display: block;
+  margin: 4px 5px 0 0;
+  float: left;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+ion-item {
+  --padding-start:0px
+}

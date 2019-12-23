@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center">Clothing</ion-title>
+        <ion-back-button slot="end"></ion-back-button>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <ion-img [src]="clothing.picture"></ion-img>
+    <ion-list>
+        <ion-item>
+            <ion-label>Colors</ion-label>
+            <span *ngFor="let color of clothing.colors" class="color"
+                  [ngStyle]="{ 'background' : color.centerRgb }"></span>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Categories</ion-label>
+            <span *ngFor="let category of clothing.categories; let last  = last">{{category.name}} <span
+                    *ngIf="!last">,</span></span>
+
+
+        </ion-item>
+        <ion-item>
+            <ion-label>Type</ion-label>
+            {{clothing.type.name}}
+        </ion-item>
+    </ion-list>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-button (click)="editProperties()">Edit properties</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button style="float:right" color="secondary" (click)="generateOutfit()">Generate outfit
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>

@@ -1,22 +1,23 @@
 <ion-app>
-  <ion-menu *ngIf="userService.isUserLoggedIn" side="start" menuId="first" contentId="content1">
-    <ion-header>
-      <ion-toolbar color="primary">
-        <ion-title>Menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <ion-list>
-        <ion-menu-toggle>
-          <ion-item [routerLink]="['/gallery']" >Gallery</ion-item>
-          <ion-item [routerLink]="['/picture-upload']" >Picture Upload</ion-item>
-          <ion-item (click)="userService.logout()">Logout</ion-item>
-        </ion-menu-toggle>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
+    <ion-menu *ngIf="userService.isUserLoggedIn" side="start" menuId="first" contentId="content1">
+        <ion-header>
+            <ion-toolbar color="primary">
+                <ion-title>Menu</ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content>
+            <ion-list>
+                <ion-menu-toggle>
+                    <ion-item [routerLink]="['/gallery']">Clothes Gallery</ion-item>
+                    <ion-item [routerLink]="['/outfit-gallery']">Outfit Gallery</ion-item>
+                    <ion-item [routerLink]="['/picture-upload']">Picture Upload</ion-item>
+                    <ion-item (click)="userService.logout()">Logout</ion-item>
+                </ion-menu-toggle>
+            </ion-list>
+        </ion-content>
+    </ion-menu>
 
 
-  <ion-router-outlet id="content1" main></ion-router-outlet>
+    <ion-router-outlet id="content1" main></ion-router-outlet>
 
 </ion-app>

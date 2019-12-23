@@ -46,8 +46,6 @@ export class RegisterPage {
       catch (error) {
         alert(error.error);
       }
-
-
     }
     else{
       alert("The 2 passwords don't match")

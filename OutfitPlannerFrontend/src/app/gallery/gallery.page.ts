@@ -27,9 +27,9 @@ export class GalleryPage implements OnInit {
   filteredClothes: Clothing[];
 
   public form: FormGroup = this.formBuilder.group({
-    color:[null, Validators.required],
-    category:[null, Validators.required],
-    type:[null, Validators.required]
+    color:[null],
+    category:[null],
+    type:[null]
   });
 
   constructor(public formBuilder:FormBuilder,public categoryService: CategoryService, public typeService: TypeService,
@@ -68,5 +68,9 @@ export class GalleryPage implements OnInit {
       }
     };
     this.router.navigate(['/clothing'],navigationExtras)
+  }
+
+  clearFilters() {
+    this.form.reset();
   }
 }

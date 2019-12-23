@@ -8,6 +8,8 @@ const routes: Routes = [
   { path: 'gallery', loadChildren: './gallery/gallery.module#GalleryPageModule' },
   { path: 'colors-modal', loadChildren: './colors-modal/colors-modal.module#ColorsModalPageModule' },
   { path: 'clothing', loadChildren: './clothing/clothing.module#ClothingPageModule' },
+  { path: 'generate-outfit-modal', loadChildren: './generate-outfit-modal/generate-outfit-modal.module#GenerateOutfitModalPageModule' },
+  { path: 'choose-outfits', loadChildren: './choose-outfits/choose-outfits.module#ChooseOutfitsPageModule' },
 
 ];
 

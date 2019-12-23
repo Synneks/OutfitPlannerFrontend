@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Generated Outfits</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-list>
+        <ion-card *ngFor="let outfit of outfits"  class="ion-padding">
+            <ion-item>
+                <!--<ion-label position="floating">Outfit name</ion-label>-->
+                <ion-input placeholder="Outfit name" type="text"></ion-input>
+                <ion-button slot="end" (click)="save(outfit)">Save</ion-button>
+            </ion-item>
+            <ion-grid class="ion-no-padding">
+                <ion-row>
+                    <ion-col size="6" *ngFor="let clothing of outfit.clothes">
+                        <ion-img [src]="clothing.picture" alt="picture" (click)="goToClothingPage(clothing)"></ion-img>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+
+        </ion-card>
+
+    </ion-list>
+
+</ion-content>

@@ -10,11 +10,6 @@
 
 <ion-content class="ion-padding">
     <ion-img [src]="clothing.picture"></ion-img>
-    <!--<div>-->
-    <!--<ion-label>Colors:</ion-label>-->
-    <!--<div >-->
-    <!--<span class="color" [ngStyle]="{ 'background' : color.centerRgb }"></span>-->
-    <!--</div>-->
     <ion-list>
         <ion-item>
             <ion-label>Colors</ion-label>
@@ -30,7 +25,7 @@
 
         </ion-item>
         <ion-item>
-            <ion-label>Type:</ion-label>
+            <ion-label>Type</ion-label>
             {{clothing.type.name}}
         </ion-item>
     </ion-list>
@@ -44,19 +39,6 @@
                 </ion-button>
             </ion-col>
         </ion-row>
-
-
     </ion-grid>
 
-    <!--<div>-->
-    <!--&lt;!&ndash;<form [formGroup]="form">&ndash;&gt;-->
-    <!--<ion-list>-->
-    <!--<ion-item *ngFor="let category of clothing.categories" (click)="log(category)">-->
-    <!--<ion-label>{{category.name}}</ion-label>-->
-    <!--<ion-checkbox slot="end"></ion-checkbox>-->
-    <!--</ion-item>-->
-    <!--</ion-list>-->
-    <!--<ion-button (click)="generateOutfit()">Generate outfit</ion-button>-->
-    <!--&lt;!&ndash;</form>&ndash;&gt;-->
-    <!--</div>-->
 </ion-content>

@@ -14,4 +14,10 @@ export class OutfitService {
   generateOutfit(clothingId,categoryId):Observable<Outfit[]>{
     return this.httpClient.get<Outfit[]>(API_URL+'outfits/generateoutfit/clothing/'+clothingId+'category/'+categoryId);
   }
+
+  getAll(){
+    const loggedUser = localStorage.getItem('user');
+    const user = JSON.parse(loggedUser);
+    return this.httpClient.get<Outfit[]>(API_URL+'/users/'+user.id+'/outfits').pipe().toPromise();
+  }
 }

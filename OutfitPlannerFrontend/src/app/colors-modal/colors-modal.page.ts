@@ -8,6 +8,7 @@ import {CategoryService} from "../services/category.service";
 import {TypeService} from "../services/type.service";
 import {Type} from "../interfaces/Type";
 import {Category} from "../interfaces/Category";
+import {ClothingService} from "../services/clothing.service";
 
 
 @Component({
@@ -38,7 +39,8 @@ export class ColorsModalPage implements OnInit {
   });
 
   constructor(private colorService: ColorService, private formBuilder: FormBuilder, public modalController: ModalController,
-              private categoryService: CategoryService, private typeService: TypeService) { }
+              private categoryService: CategoryService, private typeService: TypeService,
+              private clothingService: ClothingService) { }
 
 
   async ngOnInit() {
@@ -73,7 +75,20 @@ export class ColorsModalPage implements OnInit {
     await this.modalController.dismiss();
   }
 
-  saveChanges() {
-    //TODO
+  async saveChanges() {
+    const filteredCategories = this.categories.filter(x=>this.form.get('category').value.includes(x.name));
+    const filteredColors = this.colors.filter(x=>this.form.get('color').value.includes(x.name));
+    const filteredType = this.types.filter(x=>this.form.get('type').value == x.name);
+    this.clothing.categories = filteredCategories;
+    this.clothing.colors = filteredColors;
+    this.clothing.type = filteredType[0];
+    try {
+      await this.clothingService.change(this.clothing);
+      alert('Clothing successfully updated!');
+    }
+    catch (e) {
+      alert('Clothing could not be updated');
+    }
+
   }
 }

@@ -13,12 +13,14 @@ import {Camera} from '@ionic-native/camera/ngx';
 import {CommonModule} from "@angular/common";
 import {UserService} from "./services/user.service";
 import {ColorsModalPageModule} from "./colors-modal/colors-modal.module";
+import {GenerateOutfitModalPageModule} from "./generate-outfit-modal/generate-outfit-modal.module";
 
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, CommonModule, ColorsModalPageModule],
+  imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, CommonModule, ColorsModalPageModule,
+            GenerateOutfitModalPageModule],
   providers: [
       Camera,
     StatusBar,

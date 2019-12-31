@@ -21,13 +21,13 @@ export class ClothingService {
   getAll():Observable<Clothing[]>{
     const loggedUser = localStorage.getItem('user');
     const user = JSON.parse(loggedUser);
-    return this.httpClient.get<Clothing[]>(API_URL+'/users/'+user.id+'/clothes');
+    return this.httpClient.get<Clothing[]>(API_URL+'users/'+user.id+'/clothes');
   }
 
   change(clothing){
     const loggedUser = localStorage.getItem('user');
     const user = JSON.parse(loggedUser);
     console.log(clothing);
-    return this.httpClient.put<Clothing>(API_URL+'/users/'+user.id+'/clothes/'+clothing.id,clothing).pipe(take(1)).toPromise();
+    return this.httpClient.put<Clothing>(API_URL+'users/'+user.id+'/clothes/'+clothing.id,clothing).pipe(take(1)).toPromise();
   }
 }

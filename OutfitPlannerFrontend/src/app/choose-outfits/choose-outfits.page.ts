@@ -16,16 +16,16 @@ export class ChooseOutfitsPage implements OnInit {
 
   constructor(private outfitService: OutfitService,private route: ActivatedRoute, private router: Router
   ) {
-    // this.route.queryParams.subscribe(params => {
-    //   if (this.router.getCurrentNavigation().extras.state) {
-    //     this.outfits = this.router.getCurrentNavigation().extras.state.outfits;
-    //   }
-    // });
+    this.route.queryParams.subscribe(params => {
+      if (this.router.getCurrentNavigation().extras.state) {
+        this.outfits = this.router.getCurrentNavigation().extras.state.outfits;
+      }
+    });
   }
   async ngOnInit() {
-    this.outfitService.getAll().subscribe(data=>{
-      this.outfits= data as Outfit[];
-  })
+  //   this.outfitService.getAll().subscribe(data=>{
+  //     this.outfits= data as Outfit[];
+  // })
   }
 
   goToClothingPage(clothing: Clothing) {

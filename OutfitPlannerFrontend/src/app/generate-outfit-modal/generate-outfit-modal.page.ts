@@ -28,12 +28,11 @@ export class GenerateOutfitModalPage implements OnInit {
 
 
   async generateOutfit() {
-    //const {category} = this.form.value;
-    //const outfits = this.outfitService.generateOutfit(this.clothing.id,category.id);
-    const outfits = await this.outfitService.getAll();
+    const {category} = this.form.value;
     let navigationExtras: NavigationExtras = {
       state: {
-        outfits: outfits
+        categoryId: category.id,
+        clothingId: this.clothing.id,
       }
     };
     this.dismissModal();

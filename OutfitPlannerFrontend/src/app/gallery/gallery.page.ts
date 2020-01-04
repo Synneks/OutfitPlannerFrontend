@@ -42,12 +42,13 @@ export class GalleryPage implements OnInit {
     this.types = await this.typeService.getAll();
     this.clothingService.getAll().subscribe(data=>{
       this.clothes = data as Clothing[];
-    });
-    this.filteredClothes = this.clothes;
+      this.filteredClothes = this.clothes;
 
-    this.form.valueChanges.subscribe((formData) => {
-      this.search(formData.color, formData.category, formData.type);
+      this.form.valueChanges.subscribe((formData) => {
+        this.search(formData.color, formData.category, formData.type);
+      });
     });
+
   }
 
   search(color, category, type){

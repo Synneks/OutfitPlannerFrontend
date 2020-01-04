@@ -12,7 +12,10 @@ export class OutfitService {
   constructor(private httpClient: HttpClient) {}
 
   generateOutfit(clothingId,categoryId):Observable<Outfit[]>{
-    return this.httpClient.get<Outfit[]>(API_URL+'outfits/generateoutfit/clothing/'+clothingId+'category/'+categoryId);
+    const loggedUser = localStorage.getItem('user');
+    const user = JSON.parse(loggedUser);
+    return this.httpClient.get<Outfit[]>(API_URL+'clothes/generateOutfits/user/'+user.id+'/clothing/'+clothingId+
+        '/category/'+categoryId);
   }
 
   getAll():Observable<Outfit[]>{

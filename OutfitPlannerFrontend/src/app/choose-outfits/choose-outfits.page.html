@@ -14,6 +14,7 @@
     </ion-label>
 
     <ion-list>
+        <ion-spinner name="bubbles" *ngIf="showSpinner"></ion-spinner> 
         <ion-card *ngFor="let outfit of outfits" class="ion-padding">
             <ion-item>
                 <!--<ion-label position="floating">Outfit name</ion-label>-->

@@ -14,10 +14,10 @@
     </ion-label>
 
     <ion-list>
-        <ion-card *ngFor="let outfit of outfits" class="ion-padding">
+        <ion-card *ngFor="let outfit of outfits; let i = index" class="ion-padding">
             <ion-item>
-                <!--<ion-label position="floating">Outfit name</ion-label>-->
-                <ion-input placeholder="Outfit name" type="text"></ion-input>
+                <ion-text position="floating">Outfit {{i +1 }}</ion-text>
+                <!--<ion-input placeholder="Outfit name" type="text"></ion-input>-->
                 <ion-button slot="end" (click)="save(outfit)">Save</ion-button>
             </ion-item>
             <ion-grid class="ion-no-padding">

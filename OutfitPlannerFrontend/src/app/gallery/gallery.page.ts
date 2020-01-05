@@ -23,7 +23,7 @@ export class GalleryPage implements OnInit {
   categories: Category[];
   colors: Color[];
   types: Type[];
-
+  showSpinner: boolean = true;
   filteredClothes: Clothing[];
 
   public form: FormGroup = this.formBuilder.group({
@@ -41,6 +41,7 @@ export class GalleryPage implements OnInit {
     this.colors = await this.colorService.getAll();
     this.types = await this.typeService.getAll();
     this.clothingService.getAll().subscribe(data=>{
+      this.showSpinner = false;
       this.clothes = data as Clothing[];
       this.filteredClothes = this.clothes;
 

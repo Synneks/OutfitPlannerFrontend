@@ -33,13 +33,15 @@
             </ion-select>
         </ion-item>
     </form>
+
     <ion-button expand="full" (click)="clearFilters()">Clear filters</ion-button>
 
     <hr/>
 
+    <ion-spinner name="bubbles" *ngIf="showSpinner"></ion-spinner> 
+
     <ion-grid>
         <ion-row>
-
             <ion-col size="6" *ngFor="let clothing of filteredClothes">
 
                 <ion-img [src]="clothing.picture" alt="picture" (click)="goToClothingPage(clothing)"></ion-img>

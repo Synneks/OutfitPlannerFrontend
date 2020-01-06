@@ -40,6 +40,7 @@ export class ChooseOutfitsPage implements OnInit {
           this.outfits = data as Outfit[];
         },
         error1 => {
+          this.showSpinner = false;
           this.errorText = error1.error;
         }
       );

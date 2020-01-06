@@ -12,12 +12,11 @@
     <ion-label *ngIf="errorText">
         {{errorText}}
     </ion-label>
-
+    <ion-spinner name="bubbles" *ngIf="showSpinner"></ion-spinner>
     <ion-list>
         <ion-card *ngFor="let outfit of outfits; let i = index" class="ion-padding">
-        <ion-spinner name="bubbles" *ngIf="showSpinner"></ion-spinner>
             <ion-item>
-                <ion-text position="floating">Outfit {{i +1 }}</ion-text>
+                <ion-label position="floating">Outfit {{i + 1 }}</ion-label>
                 <ion-button slot="end" (click)="save(outfit)">Save</ion-button>
             </ion-item>
             <ion-grid class="ion-no-padding">

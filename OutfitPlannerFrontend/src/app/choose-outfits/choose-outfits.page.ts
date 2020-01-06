@@ -8,16 +8,16 @@ import {AlertController} from "@ionic/angular";
 
 
 @Component({
-    selector: 'app-choose-outfits',
-    templateUrl: './choose-outfits.page.html',
-    styleUrls: ['./choose-outfits.page.scss'],
+  selector: 'app-choose-outfits',
+  templateUrl: './choose-outfits.page.html',
+  styleUrls: ['./choose-outfits.page.scss'],
 })
 export class ChooseOutfitsPage implements OnInit {
-
-    outfits: Outfit[];
-    clothingId: Clothing;
-    categoryId: Category;
-    errorText: string;
+  outfits: Outfit[];
+  clothingId: Clothing;
+  categoryId: Category;
+  errorText: string;
+  showSpinner: boolean = true;
 
 
     constructor(private outfitService: OutfitService, private route: ActivatedRoute, private router: Router, private alertCtrl: AlertController
@@ -33,20 +33,22 @@ export class ChooseOutfitsPage implements OnInit {
 
     async ngOnInit() {
         await this.outfitService.generateOutfit(this.clothingId, this.categoryId).subscribe(data => {
+            this.showSpinner = false;
             this.outfits = data as Outfit[];
         }, error1 => {
+            this.showSpinner = false;
             this.errorText = error1.error;
         })
     }
 
-    goToClothingPage(clothing: Clothing) {
-        let navigationExtras: NavigationExtras = {
-            state: {
-                clothing: clothing
-            }
-        };
-        this.router.navigate(['/clothing'], navigationExtras)
-    }
+  goToClothingPage(clothing: Clothing) {
+    let navigationExtras: NavigationExtras = {
+      state: {
+        clothing: clothing
+      }
+    };
+    this.router.navigate(['/clothing'],navigationExtras)
+  }
 
     async save(outfit: Outfit) {
         let alert = await this.alertCtrl.create({

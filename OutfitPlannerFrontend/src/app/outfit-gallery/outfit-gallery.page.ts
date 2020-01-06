@@ -12,11 +12,13 @@ import {NavigationExtras, Router} from "@angular/router";
 export class OutfitGalleryPage implements OnInit {
 
   outfits: Outfit[];
+  showSpinner: boolean = true;
 
   constructor(private outfitService:OutfitService,  private router: Router) { }
 
   ngOnInit() {
     this.outfitService.getAll().subscribe(data=>{
+      this.showSpinner = false;
       this.outfits= data as Outfit[];
     })
   }

@@ -19,7 +19,7 @@ export class PictureUploadPage implements OnInit {
   base64Image:string;
   categories: Category[];
   types: Type[];
-  placeholderPictureUrl: string = "http://www.stleos.uq.edu.au/wp-content/uploads/2016/08/image-placeholder-350x350.png";
+  placeholderPictureUrl: string = "https://earthrider.beer/wp-content/uploads/2017/09/placeholder-picture-large-opt.png";
 
   constructor(private camera: Camera, public formBuilder: FormBuilder,
               public categoryService: CategoryService, public typeService: TypeService,

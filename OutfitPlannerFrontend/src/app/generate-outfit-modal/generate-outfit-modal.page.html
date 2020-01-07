@@ -9,10 +9,9 @@
 </ion-header>
 
   <ion-content class="ion-padding">
-    <ion-header>Choose a category for the outfit</ion-header>
     <form [formGroup]="form">
       <ion-item>
-        <ion-label>Categories</ion-label>
+        <ion-label>Choose an outfit category</ion-label>
         <ion-select multiple="false" interface="alert" formControlName="category">
           <ion-select-option *ngFor="let category of clothing.categories" [value]="category">{{category.name}}</ion-select-option>
         </ion-select>

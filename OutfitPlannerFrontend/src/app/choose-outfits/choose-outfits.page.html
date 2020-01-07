@@ -16,7 +16,7 @@
     <ion-list>
         <ion-card *ngFor="let outfit of outfits; let i = index" class="ion-padding">
             <ion-item>
-                <ion-label position="floating">Outfit {{i + 1 }}</ion-label>
+                <ion-label slot="start">Outfit {{i + 1 }}</ion-label>
                 <ion-button slot="end" (click)="save(outfit)">Save</ion-button>
             </ion-item>
             <ion-grid class="ion-no-padding">

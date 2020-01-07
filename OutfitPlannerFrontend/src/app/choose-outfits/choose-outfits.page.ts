@@ -50,6 +50,15 @@ export class ChooseOutfitsPage implements OnInit {
     this.router.navigate(['/clothing'],navigationExtras)
   }
 
+  saveOutfit(outfit: Outfit, name: string) { 
+    outfit.name = name;
+    this.outfitService.save(outfit).subscribe((response) => {
+        console.log(response)
+    }, error1 => {
+        console.log(error1);
+    });
+  }
+
     async save(outfit: Outfit) {
         let alert = await this.alertCtrl.create({
             header: 'Save outfit',
@@ -70,7 +79,6 @@ export class ChooseOutfitsPage implements OnInit {
                 {
                     text: 'Save',
                     handler: (data) => {
-
                         console.log(data);
                         outfit.name = data.outfitName;
                         this.outfitService.save(outfit).subscribe((response) => {

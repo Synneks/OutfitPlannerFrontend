@@ -17,9 +17,7 @@
     <ion-card *ngFor="let outfit of outfits; let i = index" class="ion-padding">
       <ion-item>
         <ion-input placeholder="Address Line 1" #outfitName></ion-input>
-        <ion-button slot="end" (click)="saveOutfit(outfit, outfitName.value)"
-          >Save</ion-button
-        >
+        <ion-button slot="end" (click)="saveOutfit(outfit, outfitName.value)">Save</ion-button>
       </ion-item>
 
       <ion-grid class="ion-no-padding">

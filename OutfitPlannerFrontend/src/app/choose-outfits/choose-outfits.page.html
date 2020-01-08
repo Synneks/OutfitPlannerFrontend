@@ -9,14 +9,17 @@
 </ion-header>
 
 <ion-content>
-  <ion-label *ngIf="errorText">
-    {{errorText}}
-  </ion-label>
+
+  <div class="error-message" *ngIf="errorText">
+    <ion-label class="error-text"> {{errorText}} </ion-label>
+  </div>
+
   <ion-spinner name="bubbles" *ngIf="showSpinner"></ion-spinner>
+
   <ion-list>
     <ion-card *ngFor="let outfit of outfits; let i = index" class="ion-padding">
       <ion-item>
-        <ion-input placeholder="Address Line 1" #outfitName></ion-input>
+        <ion-input placeholder="Outfit name" #outfitName></ion-input>
         <ion-button slot="end" (click)="saveOutfit(outfit, outfitName.value)">Save</ion-button>
       </ion-item>
 
@@ -31,6 +34,9 @@
           </ion-col>
         </ion-row>
       </ion-grid>
+
     </ion-card>
   </ion-list>
+
 </ion-content>
+

@@ -51,7 +51,11 @@ export class ChooseOutfitsPage implements OnInit {
   }
 
   saveOutfit(outfit: Outfit, name: string) { 
-    outfit.name = name;
+    if (name.length < 1){
+        outfit.name = ""
+    } else {
+        outfit.name = name;
+    }
     this.outfitService.save(outfit).subscribe((response) => {
         console.log(response)
     }, error1 => {

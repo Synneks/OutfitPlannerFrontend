@@ -1,35 +1,38 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-        <ion-title>Generated Outfits</ion-title>
-        <ion-back-button slot="end"></ion-back-button>
-    </ion-toolbar>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Generated Outfits</ion-title>
+    <ion-back-button slot="end"></ion-back-button>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-label *ngIf="errorText">
-        {{errorText}}
-    </ion-label>
-    <ion-spinner name="bubbles" *ngIf="showSpinner"></ion-spinner>
-    <ion-list>
-        <ion-card *ngFor="let outfit of outfits; let i = index" class="ion-padding">
-            <ion-item>
-                <ion-label position="floating">Outfit Name</ion-label>
-                <ion-input #outfitName></ion-input>
-                <ion-button slot="end" (click)="saveOutfit(outfit, outfitName.value)">Save</ion-button>
-            </ion-item>
-            <ion-grid class="ion-no-padding">
-                <ion-row>
-                    <ion-col size="6" *ngFor="let clothing of outfit.clothes">
-                        <ion-img [src]="clothing.picture" alt="picture" (click)="goToClothingPage(clothing)"></ion-img>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
+  <ion-label *ngIf="errorText">
+    {{errorText}}
+  </ion-label>
+  <ion-spinner name="bubbles" *ngIf="showSpinner"></ion-spinner>
+  <ion-list>
+    <ion-card *ngFor="let outfit of outfits; let i = index" class="ion-padding">
+      <ion-item>
+        <ion-input placeholder="Address Line 1" #outfitName></ion-input>
+        <ion-button slot="end" (click)="saveOutfit(outfit, outfitName.value)"
+          >Save</ion-button
+        >
+      </ion-item>
 
-        </ion-card>
-
-    </ion-list>
-
+      <ion-grid class="ion-no-padding">
+        <ion-row>
+          <ion-col size="6" *ngFor="let clothing of outfit.clothes">
+            <ion-img
+              [src]="clothing.picture"
+              alt="picture"
+              (click)="goToClothingPage(clothing)"
+            ></ion-img>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+  </ion-list>
 </ion-content>

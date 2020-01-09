@@ -1,18 +1,17 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { PictureUploadPage } from './picture-upload.page';
+import { PictureUploadPage } from "./picture-upload.page";
 
-describe('PictureUploadPage', () => {
+describe("PictureUploadPage", () => {
   let component: PictureUploadPage;
   let fixture: ComponentFixture<PictureUploadPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PictureUploadPage ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    })
-    .compileComponents();
+      declarations: [PictureUploadPage],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -21,7 +20,7 @@ describe('PictureUploadPage', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

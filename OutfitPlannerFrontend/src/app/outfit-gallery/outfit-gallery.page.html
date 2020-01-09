@@ -10,18 +10,21 @@
 <ion-content>
   <ion-spinner name="bubbles" *ngIf="showSpinner"></ion-spinner>
   <ion-list>
-    <ion-card *ngFor="let outfit of outfits"  class="ion-padding">
+    <ion-card *ngFor="let outfit of outfits" class="ion-padding">
       <ion-item>
         <ion-label>{{outfit.name}}</ion-label>
       </ion-item>
       <ion-grid class="ion-no-padding">
         <ion-row>
           <ion-col size="6" *ngFor="let clothing of outfit.clothes">
-            <ion-img [src]="clothing.picture" alt="picture" (click)="goToClothingPage(clothing)"></ion-img>
+            <ion-img
+              [src]="clothing.picture"
+              alt="picture"
+              (click)="goToClothingPage(clothing)"
+            ></ion-img>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-card>
   </ion-list>
-
 </ion-content>

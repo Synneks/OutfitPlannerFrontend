@@ -5,7 +5,6 @@
       <ion-button (click)="dismissModal()">Close</ion-button>
     </ion-buttons>
   </ion-toolbar>
-
 </ion-header>
 
 <ion-content class="ion-padding">
@@ -13,28 +12,45 @@
     <ion-list>
       <ion-item>
         <ion-label>Colors</ion-label>
-        <ion-select  multiple="true" interface="alert"  formControlName="color">
-          <ion-select-option *ngFor="let color of allColors" [value]="color" [selected]="isSelected(color)" >{{color}}</ion-select-option>
+        <ion-select multiple="true" interface="alert" formControlName="color">
+          <ion-select-option
+            *ngFor="let color of allColors"
+            [value]="color"
+            [selected]="isSelected(color)"
+            >{{color}}</ion-select-option
+          >
         </ion-select>
       </ion-item>
 
-
       <ion-item>
         <ion-label>Categories</ion-label>
-        <ion-select multiple="true" interface="alert" formControlName="category">
-          <ion-select-option *ngFor="let category of allCategories" [value]="category" [selected]="isSelected2(category)">{{category}}</ion-select-option>
+        <ion-select
+          multiple="true"
+          interface="alert"
+          formControlName="category"
+        >
+          <ion-select-option
+            *ngFor="let category of allCategories"
+            [value]="category"
+            [selected]="isSelected2(category)"
+            >{{category}}</ion-select-option
+          >
         </ion-select>
       </ion-item>
 
       <ion-item>
         <ion-label>Type</ion-label>
-        <ion-select multiple="false" interface="alert" formControlName="type" >
-          <ion-select-option *ngFor="let type of allTypes" [value]="type" [selected]="isSelected3(type)">{{type}}</ion-select-option>
+        <ion-select multiple="false" interface="alert" formControlName="type">
+          <ion-select-option
+            *ngFor="let type of allTypes"
+            [value]="type"
+            [selected]="isSelected3(type)"
+            >{{type}}</ion-select-option
+          >
         </ion-select>
       </ion-item>
     </ion-list>
   </form>
 
-  <ion-button expand="full"(click)="saveChanges()">Save changes</ion-button>
-
+  <ion-button expand="full" (click)="saveChanges()">Save changes</ion-button>
 </ion-content>

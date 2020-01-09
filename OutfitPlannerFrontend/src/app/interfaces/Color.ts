@@ -1,7 +1,6 @@
-export interface Color{
-    id: number;
-    name:string;
-    centerRgb:string;
-    endHsv: number;
-
+export interface Color {
+  id: number;
+  name: string;
+  centerRgb: string;
+  endHsv: number;
 }

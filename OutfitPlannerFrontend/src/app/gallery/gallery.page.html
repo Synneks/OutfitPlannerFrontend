@@ -1,54 +1,59 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-        <ion-title>Clothes Gallery</ion-title>
-
-    </ion-toolbar>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Clothes Gallery</ion-title>
+  </ion-toolbar>
 </ion-header>
 
-
 <ion-content class="ion-padding">
-    <form [formGroup]="form" (ngSubmit)="search()">
-        <ion-item>
-            <ion-label>Colors</ion-label>
-            <ion-select multiple="false" interface="alert" formControlName="color">
-                <ion-select-option *ngFor="let color of colors" [value]="color">{{color.name}}</ion-select-option>
-            </ion-select>
-        </ion-item>
+  <form [formGroup]="form" (ngSubmit)="search()">
+    <ion-item>
+      <ion-label>Colors</ion-label>
+      <ion-select multiple="false" interface="alert" formControlName="color">
+        <ion-select-option *ngFor="let color of colors" [value]="color"
+          >{{color.name}}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
 
-        <ion-item>
-            <ion-label>Categories</ion-label>
-            <ion-select multiple="false" interface="alert" formControlName="category">
-                <ion-select-option *ngFor="let category of categories"
-                                   [value]="category">{{category.name}}</ion-select-option>
-            </ion-select>
-        </ion-item>
+    <ion-item>
+      <ion-label>Categories</ion-label>
+      <ion-select multiple="false" interface="alert" formControlName="category">
+        <ion-select-option
+          *ngFor="let category of categories"
+          [value]="category"
+          >{{category.name}}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
 
-        <ion-item>
-            <ion-label>Type</ion-label>
-            <ion-select multiple="false" interface="alert" formControlName="type">
-                <ion-select-option *ngFor="let type of types" [value]="type">{{type.name}}</ion-select-option>
-            </ion-select>
-        </ion-item>
-    </form>
+    <ion-item>
+      <ion-label>Type</ion-label>
+      <ion-select multiple="false" interface="alert" formControlName="type">
+        <ion-select-option *ngFor="let type of types" [value]="type"
+          >{{type.name}}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+  </form>
 
-    <ion-button expand="full" (click)="clearFilters()">Clear filters</ion-button>
+  <ion-button expand="full" (click)="clearFilters()">Clear filters</ion-button>
 
-    <hr/>
+  <hr />
 
-    <ion-spinner name="bubbles" *ngIf="showSpinner"></ion-spinner> 
+  <ion-spinner name="bubbles" *ngIf="showSpinner"></ion-spinner>
 
-    <ion-grid>
-        <ion-row>
-            <ion-col size="6" *ngFor="let clothing of filteredClothes">
-
-                <ion-img [src]="clothing.picture" alt="picture" (click)="goToClothingPage(clothing)"></ion-img>
-
-            </ion-col>
-        </ion-row>
-
-    </ion-grid>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let clothing of filteredClothes">
+        <ion-img
+          [src]="clothing.picture"
+          alt="picture"
+          (click)="goToClothingPage(clothing)"
+        ></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

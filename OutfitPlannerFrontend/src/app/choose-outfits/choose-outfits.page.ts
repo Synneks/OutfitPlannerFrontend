@@ -4,7 +4,6 @@ import { Outfit } from "../interfaces/Outfit";
 import { Clothing } from "../interfaces/Clothing";
 import { OutfitService } from "../services/outfit.service";
 import { Category } from "../interfaces/Category";
-import { AlertController } from "@ionic/angular";
 
 @Component({
   selector: "app-choose-outfits",
@@ -21,7 +20,7 @@ export class ChooseOutfitsPage implements OnInit {
   constructor(
     private outfitService: OutfitService,
     private route: ActivatedRoute,
-    private router: Router,
+    private router: Router
   ) {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
@@ -62,11 +61,11 @@ export class ChooseOutfitsPage implements OnInit {
       outfit.name = name;
     }
     this.outfitService.save(outfit).subscribe(
-      response => {
+      () => {
         alert(`Outfit ${name} saved successfuly`);
       },
-      error1 => {
-        alert("Error at saving the outfit")
+      () => {
+        alert("Error at saving the outfit");
       }
     );
   }

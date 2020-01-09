@@ -1,16 +1,18 @@
-import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Color} from "../interfaces/Color";
-import {API_URL} from "../constants";
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Color } from "../interfaces/Color";
+import { API_URL } from "../constants";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ColorService {
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient: HttpClient) { }
-
-  getAll(){
-    return this.httpClient.get<Color[]>(API_URL + 'clothes/colors').pipe().toPromise();
+  getAll() {
+    return this.httpClient
+      .get<Color[]>(API_URL + "clothes/colors")
+      .pipe()
+      .toPromise();
   }
 }

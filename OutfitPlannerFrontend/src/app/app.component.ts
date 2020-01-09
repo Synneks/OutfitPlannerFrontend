@@ -1,16 +1,15 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
-import {MenuController, Platform} from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
-import {UserService} from "./services/user.service";
-import {ThemeService} from "./theme.service";
-
+import { MenuController, Platform } from "@ionic/angular";
+import { SplashScreen } from "@ionic-native/splash-screen/ngx";
+import { StatusBar } from "@ionic-native/status-bar/ngx";
+import { UserService } from "./services/user.service";
+import { ThemeService } from "./theme.service";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss']
+  selector: "app-root",
+  templateUrl: "app.component.html",
+  styleUrls: ["app.component.scss"]
 })
 export class AppComponent {
   constructor(
@@ -22,7 +21,7 @@ export class AppComponent {
     private themeSwitcher: ThemeService
   ) {
     this.initializeApp();
-    this.menuController.enable(true, 'first');
+    this.menuController.enable(true, "first");
   }
 
   initializeApp() {
@@ -36,13 +35,11 @@ export class AppComponent {
     // 0 = day mode
     // 1 = night mode
     if (this.themeSwitcher.currentTheme === 0) {
-      this.themeSwitcher.setTheme('night');
+      this.themeSwitcher.setTheme("night");
       this.themeSwitcher.currentTheme = 1;
     } else {
-      this.themeSwitcher.setTheme('day');
+      this.themeSwitcher.setTheme("day");
       this.themeSwitcher.currentTheme = 0;
     }
   }
-
-
 }

@@ -8,17 +8,24 @@
   </ion-toolbar>
 </ion-header>
 
-  <ion-content class="ion-padding">
-    <form [formGroup]="form">
-      <ion-item>
-        <ion-label>Choose an outfit category</ion-label>
-        <ion-select multiple="false" interface="alert" formControlName="category">
-          <ion-select-option *ngFor="let category of clothing.categories" [value]="category">{{category.name}}</ion-select-option>
-        </ion-select>
-      </ion-item>
+<ion-content class="ion-padding">
+  <form [formGroup]="form">
+    <ion-item>
+      <ion-label>Choose an outfit category</ion-label>
+      <ion-select multiple="false" interface="alert" formControlName="category">
+        <ion-select-option
+          *ngFor="let category of clothing.categories"
+          [value]="category"
+          >{{category.name}}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
 
-      <ion-button expand="full"(click)="generateOutfit()" [disabled]="form.invalid">Generate Outfit</ion-button>
-    </form>
-
-
+    <ion-button
+      expand="full"
+      (click)="generateOutfit()"
+      [disabled]="form.invalid"
+      >Generate Outfit</ion-button
+    >
+  </form>
 </ion-content>

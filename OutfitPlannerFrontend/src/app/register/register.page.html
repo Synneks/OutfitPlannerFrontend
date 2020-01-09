@@ -17,12 +17,18 @@
       </ion-item>
       <ion-item>
         <ion-label position="floating">Confirm Password</ion-label>
-        <ion-input formControlName="confirmPassword" type="password"></ion-input>
+        <ion-input
+          formControlName="confirmPassword"
+          type="password"
+        ></ion-input>
       </ion-item>
     </ion-list>
-    <ion-button  type="submit" [disabled]="this.form.invalid" expand="full">Register</ion-button>
-    <hr/>
-    <div class="ion-text-center"> Go back to <a [routerLink]="['/']">Login</a></div>
+    <ion-button type="submit" [disabled]="this.form.invalid" expand="full"
+      >Register</ion-button
+    >
+    <hr />
+    <div class="ion-text-center">
+      Go back to <a [routerLink]="['/']">Login</a>
+    </div>
   </form>
-
 </ion-content>

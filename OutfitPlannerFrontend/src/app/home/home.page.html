@@ -10,18 +10,21 @@
 <ion-content class="ion-padding">
   <form [formGroup]="form" (ngSubmit)="login()">
     <ion-list>
-    <ion-item>
-      <ion-label position="floating">Username</ion-label>
-      <ion-input formControlName="username" type="text"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label position="floating">Username</ion-label>
+        <ion-input formControlName="username" type="text"></ion-input>
+      </ion-item>
       <ion-item>
         <ion-label position="floating">Password</ion-label>
         <ion-input formControlName="password" type="password"></ion-input>
       </ion-item>
     </ion-list>
-    <ion-button  type="submit" [disabled]="this.form.invalid" expand="full">Login</ion-button>
-    <hr/>
-    <div class="ion-text-center"> Don't have an account? <a [routerLink]="['/register']">Register</a></div>
+    <ion-button type="submit" [disabled]="this.form.invalid" expand="full"
+      >Login</ion-button
+    >
+    <hr />
+    <div class="ion-text-center">
+      Don't have an account? <a [routerLink]="['/register']">Register</a>
+    </div>
   </form>
-
 </ion-content>

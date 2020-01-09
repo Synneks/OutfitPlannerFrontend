@@ -1,7 +1,7 @@
-import {Clothing} from "./Clothing";
+import { Clothing } from "./Clothing";
 
-export interface Outfit{
-    id:number;
-    name: string;
-    clothes: Clothing[];
+export interface Outfit {
+  id: number;
+  name: string;
+  clothes: Clothing[];
 }

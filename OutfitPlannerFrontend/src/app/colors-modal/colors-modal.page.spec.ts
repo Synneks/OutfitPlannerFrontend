@@ -1,18 +1,17 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ColorsModalPage } from './colors-modal.page';
+import { ColorsModalPage } from "./colors-modal.page";
 
-describe('ColorsModalPage', () => {
+describe("ColorsModalPage", () => {
   let component: ColorsModalPage;
   let fixture: ComponentFixture<ColorsModalPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ColorsModalPage ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    })
-    .compileComponents();
+      declarations: [ColorsModalPage],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -21,7 +20,7 @@ describe('ColorsModalPage', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

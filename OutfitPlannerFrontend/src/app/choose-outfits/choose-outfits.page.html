@@ -1,11 +1,11 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Generated Outfits</ion-title>
-    <ion-back-button slot="end"></ion-back-button>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Generated Outfits</ion-title>
+        <ion-back-button slot="end"></ion-back-button>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
@@ -17,7 +17,7 @@
   <ion-spinner name="bubbles" *ngIf="showSpinner"></ion-spinner>
 
   <ion-list>
-    <ion-card *ngFor="let outfit of outfits; let i = index" class="ion-padding">
+    <ion-card *ngFor="let outfit of outfits" class="ion-padding">
       <ion-item>
         <ion-input placeholder="Outfit name" #outfitName></ion-input>
         <ion-button slot="end" (click)="saveOutfit(outfit, outfitName.value)">Save</ion-button>
@@ -35,8 +35,8 @@
         </ion-row>
       </ion-grid>
 
-    </ion-card>
-  </ion-list>
+        </ion-card>
+
+    </ion-list>
 
 </ion-content>
-
